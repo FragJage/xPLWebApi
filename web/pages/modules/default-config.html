@@ -1,0 +1,27 @@
+<div id="detail" ng-controller="moduleCtrl">
+
+<div ng-include="'default-infos.html'"></div>
+
+<table ng-show="module">
+<thead ng-show="module.config">
+  <tr><th colspan=2>Configuration <exp ng-show="isModified">*</exp></th></tr>
+</thead>
+<tbody id="configForm" ng-show="module.config">
+<tr ng-repeat="(key,val) in module.config">
+  <th><label>{{key}}</label></th>
+  <td>
+    <input ng-if="val.max==1" type="text" ng-model="val.value"/>
+    <div ng-if="val.max>1" ng-repeat="myvalue in val.value track by $index">
+      <input type="text" ng-model="myvalue"/>
+      <img ng-if="$index>0" ng-click="optionRemove(key, myvalue)" class="circlebutton" src="../images/minus.gif" height="14" width="14"/>
+      <img ng-if="$index==0" ng-click="optionAdd(key)" class="circlebutton" src="../images/plus.gif" height="14" width="14"/>
+      <br>
+    </div>
+  </td>
+</tr>
+<tr><td colspan=2 align=right><button ng-disabled="!isModified" ng-click="saveConfig()" ng-class="{buttonenabled: isModified, buttondisabled: !isModified}" class=buttonmedium>Enregistrer</button></td></tr>
+<tr><td colspan=2 align=left ng-show="module.AdvanceConfig"><button ng-click="saveConfig()" class=buttonmedium>Configuration avancée</button></td></tr>
+</tbody>
+</table>
+
+</div>

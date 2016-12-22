@@ -1,0 +1,63 @@
+<link rel="stylesheet" type="text/css" href="pages/modules/modules.css">
+<br>
+
+<table>
+  <thead><tr><th colspan=5>Configuration avanc&eacute;e de {{module}}<exp ng-show="isModified">*</exp></th></tr></thead>
+  <tr><td>&nbsp;</td></tr>
+
+  <tr>
+    <td ng-repeat="(key,val) in advance.format" class=title>{{key}}</td>
+  </tr>
+  <tr ng-repeat="lig in advance.config track by $index">
+    <td ng-repeat="(key,val) in advance.format" ng-switch="val">
+      <input ng-switch-when="boolean" class=checkbox type="checkbox" ng-model="lig[key]"/>
+      <input ng-switch-default list="{{val.list}}" type="text" ng-model="lig[key]"/>
+    </td>
+    <td>
+      <img ng-if="$index>0" ng-click="optionRemove(lig)" class="circlebutton" src="images/minus.gif" height="14" width="14"/>
+      <img ng-if="$index==0" ng-click="optionAdd()" class="circlebutton" src="images/plus.gif" height="14" width="14"/>
+    </td>
+  </tr>
+  <tr><td>&nbsp;</td></tr>
+
+  <tr><td colspan=5 align=right><button ng-disabled="!isModified" ng-click="saveConfig()" ng-class="{buttonenabled: isModified, buttondisabled: !isModified}" class=buttonmedium>Enregistrer</button></td></tr>
+</table>
+
+<datalist id="sensortype">
+  <option value="battery">Batterie</option>
+  <option value="count">Compteur</option>
+  <option value="current">Courant</option>
+  <option value="direction">Direction</option>
+  <option value="distance">Distance</option>
+  <option value="energy">Energie</option>
+  <option value="fan">Ventillateur</option>
+  <option value="generic">G&eacute;n&eacute;rique</option>
+  <option value="humidity">Humidit&eacute;</option>
+  <option value="illuminance">Luminosit&eacute;</option>
+  <option value="input">Entr&eacute;e</option>
+  <option value="output">Sortie</option>
+  <option value="power">Puissance</option>
+  <option value="pressure">Pression</option>
+  <option value="setpoint"></option>
+  <option value="speed">Vitesse</option>
+  <option value="temp">Temp&eacute;rature</option>
+  <option value="uv"></option>
+  <option value="voltage">Tension</option>
+  <option value="volume">Volume</option>
+  <option value="weight">Poids</option>
+</datalist>
+
+<datalist id="controltype">
+  <option value="balance">Balance</option>
+  <option value="flag">Drapeau</option>
+  <option value="infrared">Infrarouge</option>
+  <option value="input">Entr&eacute;e</option>
+  <option value="macro">Macro</option>
+  <option value="mute">Muet</option>
+  <option value="output">Sortie</option>
+  <option value="variable">Variable</option>
+  <option value="periodic">P&eacute;riodique</option>
+  <option value="scheduled">Calendrier</option>
+  <option value="slider">Curseur</option>
+  <option value="timer">Chrono</option>
+</datalist>

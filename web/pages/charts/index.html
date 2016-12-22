@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="pages/charts/charts.css">
+
+    <div>
+        <highchart id="chart1" config="chartConfig"></highchart>
+    </div>
+    <div class="block25">
+      <button ng-repeat="device in devices" ng-click="addDevice(device)" class="btn1" ng-class="selDevice(device) ? 'sel' : 'nsel'">{{device}}</button>
+    </div>
+    <div class="block25">
+      <button ng-click="setPeriode('J')" ng-class="periode=='J' ? 'sel' : 'nsel'" class="btn3">Jour</button>
+      <button ng-click="setPeriode('S')" ng-class="periode=='S' ? 'sel' : 'nsel'" class="btn3">Semaine</button>
+      <button ng-click="setPeriode('M')" ng-class="periode=='M' ? 'sel' : 'nsel'" class="btn3">Mois</button><br>
+      
+      <button ng-click="setMode('F')" ng-class="mode=='F' ? 'sel' : 'nsel'" class="btn2">Fixe</button>
+      <button ng-click="setMode('G')" ng-class="mode=='G' ? 'sel' : 'nsel'" class="btn2">Glissant</button><br>
+
+      <button ng-click="setDecale(-1)" class="btn2">Pr&eacute;c&eacute;dent</button>
+      <button ng-click="setDecale(1)" class="btn2">Suivant</button><br>
+    </div>

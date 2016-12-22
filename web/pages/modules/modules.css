@@ -1,0 +1,15 @@
+thead
+{  
+  background-image: url("module-ico.gif");
+  background-repeat: no-repeat; 
+}
+.title
+{
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: bold;
+}
+.checkbox
+{
+  margin-top: 4px;
+}

@@ -1,0 +1,15 @@
+<table ng-show="module">
+<thead>
+  <tr><th colspan=2>{{module.name}}&nbsp;<img align=right ng-click="refresh()" class="circlebutton" src="../images/refresh.png" title="Actualiser" border="0" height="16" width="16"></th></tr>
+</thead>
+<tbody>
+  <tr><th>Status</th>           <td>{{module.status}}</td></tr>
+  <tr><th>Port</th>             <td>{{module.port}}</td></tr>
+  <tr><th>Machine</th>          <td>{{module['remote-ip']}}</td></tr>
+  <tr><th>Version</th>          <td>{{module.version}}</td></tr>
+  <tr><th>Interval</th>         <td>{{module.interval}}</td></tr>
+  <tr><th>D&eacute;tect&eacute; le</th>       <td>{{module.detect}}</td></tr>
+  <tr><th>Dernier contact</th>  <td>{{module.alive}}</td></tr>
+</tbody>
+</table>
+<br>

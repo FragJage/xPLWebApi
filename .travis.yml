@@ -1,0 +1,36 @@
+language: cpp
+
+compiler: gcc
+env:
+  global:
+    - COMPILER=g++-4.9
+    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+    #   via the "travis encrypt" command using the project repo's public key
+    - secure: "Bl76TrJXcXqYc3ejFAIFD1WA/eOcM0pPPzISGD04OSN+vFsUHmNFAIAqkV9q2nP8qHym20EBNs85SBW1AAVKjXKzktRzkiUeJxfNFJSPXgtfzwOHBuGClhud/Q/pV/qRkc3C+tSVinPWLktlRGHJs0lts2ujQvEJ/eTflA9kj8Nx4GNKHaEB1205eoO52mjMQ60B0ti66ZS7xLxxgx7Ac6aKdBi7Rn22r0IXR72mjPjhiJwH8lFjv1ENMzRoTiemJlm6wSCC5MhjspvWwBpy+BwdklYGHVgZhg0D7iOz4r2JxygqkxbP11aG47IwEJnQue39IZbX+v84138qlyZ5KVB2OtVGUUz5n5n45TcS3qwJSLheakarhpzbTsA3wzkWynqH+fk8iL0uMSF3NF+LFqN5MIb1Hkn/TrRsRDzws5uEJRelp13R6QEzeZpjz4GiJKfBI10mlPYsM9BCstHSc1NwOm5qHixg/H6PYXoekIk6uKkLxpzFMlSTOUo3tRsd8PHfYIQ/U3ePx3bSloBtXvFGTF+86bGDS8yU45Zg/Ds2V7viQMiWgfS0jO9zSMLhQVeK0NxjlKAqO3HEXRej7edXHmVDF/yrlXlUAAHQFu8Ela6C/Csjt9J8XETVDDtewCdTvvP8e9UV9EGdCrMMQmlfIq9XxQ1H35/dHTj2rmo="
+
+sudo: required
+
+addons:
+  apt:
+    sources: ['ubuntu-toolchain-r-test']
+    packages: ['g++-4.9','valgrind']
+  coverity_scan:
+    project:
+      name: "FragJage/xPLWebApi"
+      description: "xPL daemon to communicate to xpl protocol with webapi."
+    notification_email: inscrip.jage@free.fr
+    build_command_prepend: "cov-configure --comptype g++ --compiler $(which $COMPILER) && cmake . -G'Unix Makefiles' -DCMAKE_CXX_COMPILER=$(which $COMPILER)"
+    build_command: "make"
+    branch_pattern: coverity_branch
+    
+install:
+  - pip install --user git+git://github.com/eddyxu/cpp-coveralls.git
+
+script:
+  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then cmake . -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=$(which $COMPILER); fi
+  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then make; fi
+  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then ./test/bin/unittest; fi
+
+after_success:
+  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then valgrind --error-exitcode=1 --leak-check=full ./test/bin/unittest; fi
+  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then coveralls --include src --gcov-options '\-lp' --gcov 'gcov-4.9'; fi

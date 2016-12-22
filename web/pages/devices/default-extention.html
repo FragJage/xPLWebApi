@@ -1,0 +1,4 @@
+  <h3>{{val.name}}</h3>
+  <div ng-if="template[val.schema]"><div ng-include="'pages/devices/'+template[val.schema]"></div></div>
+  <div ng-if="!template[val.schema]"><div ng-include="'pages/devices/default-device.html'"></div></div>
+  <div class=alive>{{val.alive}}</div>

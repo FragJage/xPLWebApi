@@ -1,0 +1,4 @@
+http://flaticons.net/
+Dim 256
+Padding 0
+Color FFBFFF

@@ -1,0 +1,21 @@
+  <div class=value ng-switch="val.type">
+    <div ng-switch-when="temp">
+      <img src="pages/devices/sensor_temp.gif" border="0" height="77" width="22">&nbsp;{{val.value}}
+    </div>
+    <div ng-switch-when="output">
+      <div ng-switch="val.value">
+      <img ng-switch-when="low" src="pages/devices/sensor_ouput_low.gif" border="0" height="78" width="76">
+      <img ng-switch-when="high" src="pages/devices/sensor_ouput_high.gif" border="0" height="78" width="76">
+      <img ng-switch-default src="pages/devices/sensor_ouput_unknown.gif" border="0" height="78" width="76">
+      </div>
+    </div>
+    <div ng-switch-when="input">
+      <div ng-switch="val.value">
+      <img ng-switch-when="low" src="pages/devices/sensor_input_low.gif" border="0" height="78" width="76">
+      <img ng-switch-when="high" src="pages/devices/sensor_input_high.gif" border="0" height="78" width="76">
+      <img ng-switch-when="pulse" src="pages/devices/sensor_input_pulse.gif" border="0" height="78" width="76">
+      <img ng-switch-default src="pages/devices/sensor_ouput_unknown.gif" border="0" height="78" width="76">
+      </div>
+    </div>
+    <div ng-switch-default>{{val.value}}</div>
+  </div>

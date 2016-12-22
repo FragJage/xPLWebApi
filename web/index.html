@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html ng-app="DomonetApp">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="images/logo16.gif">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+<header>
+  <a href="index.html#/menu"><img src="images/logo.gif" alt="Domo.Network" border=0 height="91" width="259"></a>
+</header>
+
+<div id=assombrir ng-controller="waitingCtrl" ng-show="wait"></div>
+    
+<div ng-view>
+</div>
+
+<footer class="page-footer">
+</footer>
+
+<script src="libs/angular/angular.js"></script>
+<script src="libs/angular/angular-route.js"></script>
+<script src="libs/angular/ng-breadcrumbs.js"></script>
+
+<script src="libs/angular/angular-gridster.js"></script>
+<script src="libs/angular-ui/ui-utils.js"></script>
+
+<script src="libs/jquery/jquery-2.2.1.min.js"></script>
+<script src="libs/highcharts/highcharts.js"></script>
+<script src="libs/highcharts/highcharts-ng.js"></script>
+<script src="libs/moment/moment.js"></script>
+
+<script src="domonet.js"></script>
+<script src="utilities.js"></script>
+
+<script src="pages/modules/modules.js"></script>
+<script src="pages/devices/devices.js"></script>
+<script src="pages/charts/charts.js"></script>
+
+</body>
+</html>

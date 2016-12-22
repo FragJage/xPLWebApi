@@ -1,0 +1,91 @@
+<div ng-controller="moduleCtrl">
+<div ng-include="'default-infos.html'"></div>
+<table ng-show="module">
+<thead ng-show="module.config">
+  <tr><th colspan=2>Configuration fictif<exp ng-show="isModified">*</exp></th></tr>
+</thead>
+<tbody id="configForm" ng-show="module.config">
+<tr><th><label>Instance</label></th><td><input type="text" ng-model="module.config.newconf.value"/></td></tr>
+<tr><th><label>Intervalle</label></th><td><input type="text" ng-model="module.config.interval.value"/></td></tr>
+<tr><th><label>Capteurs fictifs</label></th><td>
+    <table>
+    <tr><td>Nom</td><td>Type</td><td>Valeur</td><td>M&eacute;moriser</td><td></td></tr>
+    <tr ng-repeat="myvalue in configSplit.fictif track by $index">
+      <td><input type="text" ng-model="myvalue[0]"/></td>
+      <td><input list="typecapteur" type="text" ng-model="myvalue[1]"/></td>
+      <td><input type="text" ng-model="myvalue[2]"/></td>
+      <td><input type="checkbox" ng-true-value="O" ng-false-value="N" ng-model="myvalue[3]"/>Oui</td>
+      <td>
+      <img ng-if="$index>0" ng-click="optionRemove('fictif', myvalue)" class="circlebutton" src="../images/minus.gif" height="14" width="14"/>
+      <img ng-if="$index==0" ng-click="optionAdd('fictif')" class="circlebutton" src="../images/plus.gif" height="14" width="14"/>
+      </td>
+    </tr>
+    </table>
+    <datalist id="typecapteur">
+      <option value="battery">Batterie</option>
+      <option value="count">Compteur</option>
+      <option value="current">Courant</option>
+      <option value="direction">Direction</option>
+      <option value="distance">Distance</option>
+      <option value="energy">Energie</option>
+      <option value="fan">Ventillateur</option>
+      <option value="generic">G&eacute;n&eacute;rique</option>
+      <option value="humidity">Humidit&eacute;</option>
+      <option value="illuminance">Luminosit&eacute;</option>
+      <option value="input">Entr&eacute;e</option>
+      <option value="output">Sortie</option>
+      <option value="power">Puissance</option>
+      <option value="pressure">Pression</option>
+      <option value="setpoint"></option>
+      <option value="speed">Vitesse</option>
+      <option value="temp">Temp&eacute;rature</option>
+      <option value="uv"></option>
+      <option value="voltage">Tension</option>
+      <option value="volume">Volume</option>
+      <option value="weight">Poids</option>
+    </datalist>
+</td></tr>
+<tr><th><label>Filtres</label></th><td>
+    <div ng-repeat="myvalue in module.config.filter.value track by $index">
+      <input type="text" ng-model="myvalue"/>
+      <img ng-if="$index>0" ng-click="optionRemove('filter', myvalue)" class="circlebutton" src="../images/minus.gif" height="14" width="14"/>
+      <img ng-if="$index==0" ng-click="optionAdd('filter')" class="circlebutton" src="../images/plus.gif" height="14" width="14"/>
+      <br>
+    </div>
+</td></tr>
+<tr><th><label>Groupes</label></th><td>
+    <div ng-repeat="myvalue in module.config.group.value track by $index">
+      <input type="text" ng-model="myvalue"/>
+      <img ng-if="$index>0" ng-click="optionRemove('group', myvalue)" class="circlebutton" src="../images/minus.gif" height="14" width="14"/>
+      <img ng-if="$index==0" ng-click="optionAdd('group')" class="circlebutton" src="../images/plus.gif" height="14" width="14"/>
+      <br>
+    </div>
+</td></tr>
+<tr><th><label>Logdestination</label></th><td>
+  <input type="text" list="sortie" ng-model="module.config.logdestination.value"/>
+  <datalist id="sortie">
+    <option value="cout">Sortie standard</option>
+    <option value="cerr">Sortie en erreur</option>
+    <option value="clog">Sortie des logs</option>
+    <option value="fragxpl-webapi.log">Fichier</option>
+  </datalist>
+</td></tr>
+<tr><th><label>Logfunction</label></th><td><input type="text" ng-model="module.config.logfunction.value"/></td></tr>
+<tr><th><label>Loglevel</label></th><td>
+  <select ng-model="module.config.loglevel.value">
+  <option value="1">Erreurs fatales</option>
+  <option value="2">Message d'erreurs</option>
+  <option value="3">Avertissements</option>
+  <option value="4">Informations</option>
+  <option value="5">Debug</option>
+  <option value="6">Bavard</option>
+  <option value="7">Trace</option>
+  </select>
+</td></tr>
+<tr><th><label>Logmodule</label></th><td><input type="text" ng-model="module.config.logmodule.value"/></td></tr>
+<tr><td colspan=2 align=right><button ng-disabled="!isModified" ng-click="saveConfig()" ng-class="{buttonenabled: isModified, buttondisabled: !isModified}" class=buttonmedium>Enregistrer</button></td></tr>
+<tr><td colspan=2 align=left ng-show="module.AdvanceConfig"><button ng-click="saveConfig()" class=buttonmedium>Configuration avancée</button></td></tr>
+</tbody>
+</table>
+
+</div>

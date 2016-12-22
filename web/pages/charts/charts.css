@@ -1,0 +1,60 @@
+div.block25
+{
+  float: left;
+  width: 25%;
+  margin: 10px;
+}
+
+.nsel
+{
+  background-color: #E3DDFF;
+}
+
+.sel
+{
+  background-color: #D2CCEE;
+}
+
+button
+{
+  color: #253340;
+  background-color: #E3DDFF;
+  font-family: "Segoe UI",Segoe,"Trebuchet MS",Tahoma,Geneva,sans-serif;
+  font-size: 12px;
+  padding: 5px;
+  white-space: nowrap;
+  text-overflow : ellipsis;
+  overflow : hidden;
+}
+
+button:hover
+{
+  background-color: #F4EEFF;
+  cursor: pointer;
+}
+
+button:focus
+{
+  outline:0;
+}
+
+.btn1
+{
+  text-align: left;
+  width: 100%;
+  margin: 0px 0px 5px 0px;
+}
+
+.btn2
+{
+  text-align: center;
+  width: 123px;
+  margin: 0px 0px 6px 6px;
+}
+
+.btn3
+{
+  text-align: center;
+  width: 80px;
+  margin: 0px 0px 6px 6px;
+}

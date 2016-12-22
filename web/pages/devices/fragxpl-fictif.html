@@ -1,0 +1,16 @@
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+      <h3>{{val.name}}</h3>
+      <div ng-if="template[val.schema]"><div ng-include="'pages/devices/'+template[val.schema]"></div></div>
+      <div ng-if="!template[val.schema]"><div ng-include="'pages/devices/default-device.html'"></div></div>
+      <div class=alive>{{val.alive}}</div>
+		</div>
+		<div class="back">
+      <h3>{{val.name}}</h3><br>
+      <label>Nouvelle valeur</label><br>
+      <input type="text" ng-model="val.newValue" size="20" style="width:50%"><br><br>
+      <button ng-click="sendValue(val)">Envoyer</button>
+		</div>
+	</div>
+</div>

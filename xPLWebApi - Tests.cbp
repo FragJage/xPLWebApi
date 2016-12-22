@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="xPLWebApi - Tests" />
+		<Option pch_mode="2" />
+		<Option default_target="Debug" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="bin/unittest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add option="-DWIN32" />
+					<Add option="-DSIMPLESOCKUDP_MOCK" />
+					<Add directory="src" />
+					<Add directory="dependency" />
+					<Add directory="dependency/jsoncpp/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="ws2_32" />
+				</Linker>
+			</Target>
+			<Target title="Debug">
+				<Option output="bin/unittest-Debug" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add option="-DDEBUG" />
+					<Add option="-DWIN32" />
+					<Add directory="src" />
+					<Add directory="dependency" />
+					<Add directory="dependency/jsoncpp/include" />
+				</Compiler>
+				<Linker>
+					<Add library="ws2_32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="xPLLib/src" />
+		</Compiler>
+		<Unit filename="dependency/Plateforms/Plateforms.cpp" />
+		<Unit filename="dependency/Plateforms/Plateforms.h" />
+		<Unit filename="dependency/SafeFunctions/SafeFunctions.cpp" />
+		<Unit filename="dependency/SafeFunctions/SafeFunctions.h" />
+		<Unit filename="dependency/Service/Service.cpp" />
+		<Unit filename="dependency/Service/Service.h" />
+		<Unit filename="dependency/SimpleFolders/SimpleFolders.cpp" />
+		<Unit filename="dependency/SimpleFolders/SimpleFolders.h" />
+		<Unit filename="dependency/SimpleIni/SimpleIni.cpp" />
+		<Unit filename="dependency/SimpleIni/SimpleIni.h" />
+		<Unit filename="dependency/SimpleLog/SimpleLog.cpp" />
+		<Unit filename="dependency/SimpleLog/SimpleLog.h" />
+		<Unit filename="dependency/SimpleLog/SimpleLog.inl" />
+		<Unit filename="dependency/SimpleSock/SimpleSock.cpp" />
+		<Unit filename="dependency/SimpleSock/SimpleSock.h" />
+		<Unit filename="dependency/SimpleSock/SimpleSockTCP.cpp" />
+		<Unit filename="dependency/SimpleSock/SimpleSockTCP.h" />
+		<Unit filename="dependency/SimpleSock/SimpleSockUDP.cpp" />
+		<Unit filename="dependency/SimpleSock/SimpleSockUDP.h" />
+		<Unit filename="dependency/SimpleSock/SimpleSockUDP_Mock.h" />
+		<Unit filename="dependency/StringTools/StringTools.cpp" />
+		<Unit filename="dependency/StringTools/StringTools.h" />
+		<Unit filename="dependency/Thread/mingw.mutex.h" />
+		<Unit filename="dependency/UnitTest/UnitTest.cpp" />
+		<Unit filename="dependency/UnitTest/UnitTest.h" />
+		<Unit filename="dependency/UnitTest/termcolor.h" />
+		<Unit filename="dependency/WebServer/IWebController.h" />
+		<Unit filename="dependency/WebServer/PageController.cpp" />
+		<Unit filename="dependency/WebServer/PageController.h" />
+		<Unit filename="dependency/WebServer/Request.cpp" />
+		<Unit filename="dependency/WebServer/Request.h" />
+		<Unit filename="dependency/WebServer/Response.cpp" />
+		<Unit filename="dependency/WebServer/Response.h" />
+		<Unit filename="dependency/WebServer/WebServer.cpp" />
+		<Unit filename="dependency/WebServer/WebServer.h" />
+		<Unit filename="dependency/jsoncpp/include/json/json.h" />
+		<Unit filename="dependency/jsoncpp/src/lib_json/json_reader.cpp" />
+		<Unit filename="dependency/jsoncpp/src/lib_json/json_value.cpp" />
+		<Unit filename="dependency/jsoncpp/src/lib_json/json_writer.cpp" />
+		<Unit filename="dependency/xPLLib/Address.cpp" />
+		<Unit filename="dependency/xPLLib/Address.h" />
+		<Unit filename="dependency/xPLLib/Extensions/AdvanceConfig.cpp" />
+		<Unit filename="dependency/xPLLib/Extensions/AdvanceConfig.h" />
+		<Unit filename="dependency/xPLLib/Extensions/BasicConfig.cpp" />
+		<Unit filename="dependency/xPLLib/Extensions/BasicConfig.h" />
+		<Unit filename="dependency/xPLLib/Extensions/Sensors.cpp" />
+		<Unit filename="dependency/xPLLib/Extensions/Sensors.h" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaAdvanceConfig.cpp" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaAdvanceConfig.h" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaConfig.cpp" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaConfig.h" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaControl.cpp" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaControl.h" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaHbeat.cpp" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaHbeat.h" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaObject.cpp" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaObject.h" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaSensor.cpp" />
+		<Unit filename="dependency/xPLLib/Schemas/SchemaSensor.h" />
+		<Unit filename="dependency/xPLLib/xPLDevCfg.cpp" />
+		<Unit filename="dependency/xPLLib/xPLDevCfg.h" />
+		<Unit filename="dependency/xPLLib/xPLDevice.cpp" />
+		<Unit filename="dependency/xPLLib/xPLDevice.h" />
+		<Unit filename="src/AdvanceConfigController.cpp" />
+		<Unit filename="src/AdvanceConfigController.h" />
+		<Unit filename="src/CacheManager.cpp" />
+		<Unit filename="src/CacheManager.h" />
+		<Unit filename="src/DataloggerController.cpp" />
+		<Unit filename="src/DataloggerController.h" />
+		<Unit filename="src/DevicesController.cpp" />
+		<Unit filename="src/DevicesController.h" />
+		<Unit filename="src/IxPLSend.h" />
+		<Unit filename="src/MessagesController.cpp" />
+		<Unit filename="src/MessagesController.h" />
+		<Unit filename="src/ModulesController.cpp" />
+		<Unit filename="src/ModulesController.h" />
+		<Unit filename="src/WebManager.cpp" />
+		<Unit filename="src/WebManager.h" />
+		<Unit filename="src/xPLManager.cpp" />
+		<Unit filename="src/xPLManager.h" />
+		<Unit filename="src/xPLWebApi.cpp" />
+		<Unit filename="src/xPLWebApi.h" />
+		<Unit filename="test/CacheManagerMock.cpp" />
+		<Unit filename="test/CacheManagerMock.h" />
+		<Unit filename="test/TestAdvanceConfigController.cpp" />
+		<Unit filename="test/TestAdvanceConfigController.h" />
+		<Unit filename="test/TestCacheManager.cpp" />
+		<Unit filename="test/TestCacheManager.h" />
+		<Unit filename="test/TestDataloggerController.cpp" />
+		<Unit filename="test/TestDataloggerController.h" />
+		<Unit filename="test/TestDevicesController.cpp" />
+		<Unit filename="test/TestDevicesController.h" />
+		<Unit filename="test/TestMessagesController.cpp" />
+		<Unit filename="test/TestMessagesController.h" />
+		<Unit filename="test/TestModulesController.cpp" />
+		<Unit filename="test/TestModulesController.h" />
+		<Unit filename="test/TestxPLWebApi.cpp" />
+		<Unit filename="test/TestxPLWebApi.h" />
+		<Unit filename="test/main.cpp" />
+		<Unit filename="test/xPLSendMock.cpp" />
+		<Unit filename="test/xPLSendMock.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="2" line="2" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

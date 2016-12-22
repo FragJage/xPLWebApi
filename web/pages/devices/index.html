@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="pages/devices/devices.css">
+<link rel="stylesheet" type="text/css" href="libs/angular/angular-gridster.min.css"/>
+<link rel="stylesheet" type="text/css" href="libs/flipper/flipper.css"/>
+
+<div class="FilterTitle">Filtres
+<label> par nom <input class=filter ng-model="search.name"></label>
+<label> par schema <input class=filter list="schemasList" ng-model="search.schema"></label>
+<label> par type <input class=filter list="typesList" ng-model="search.type"></label>
+<label> par module <input class=filter list="modulesList" ng-model="search.module"></label>
+<datalist id="schemasList">
+   <option ng-repeat="val in devices | unique:'schema'" value="{{val.schema}}"/>
+</datalist>
+<datalist id="typesList">
+   <option ng-repeat="val in devices | unique:'type'" value="{{val.type}}"/>
+</datalist>
+<datalist id="modulesList">
+   <option ng-repeat="val in devices | unique:'module'" value="{{val.module}}"/>
+</datalist>
+</div><br>
+
+<div gridster="gridsterOpts"><ul> 
+<li gridster-item="val" ng-repeat="(key,val) in devices | filter:search:strict" data-row="item.col" data-col="item.row" data-size-x="item.sizeX" data-size-y="item.sizeY">
+<div class=grid>
+  <div ng-if="extension[val.module]"><div ng-include="'pages/devices/'+extension[val.module]"></div></div>
+  <div ng-if="!extension[val.module]"><div ng-include="'pages/devices/default-extention.html'"></div></div>
+</div>
+</li>
+</ul></div>
