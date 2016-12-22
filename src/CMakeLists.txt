@@ -107,6 +107,8 @@ add_executable(
   xPLWebApi.cpp
 )
 
+target_link_libraries(xPLWebApi ${CMAKE_THREAD_LIBS_INIT} )
+
 #Spécification WIN32
 if(WIN32)
   target_link_libraries(xPLWebApi ws2_32)
