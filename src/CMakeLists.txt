@@ -5,6 +5,12 @@ else ()
   set (CMAKE_CXX_STANDARD 11)
 endif ()
 
+#Librairie PTHREAD 
+if(CMAKE_VERSION VERSION_GREATER "3.0")
+  set(THREADS_PREFER_PTHREAD_FLAG ON)
+endif ()
+find_package(Threads)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -W -Wshadow -Wunused-variable -Wunused-parameter -Wunused-function -Wunused -Wno-system-headers -Wno-deprecated -Woverloaded-virtual") # various warning flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s -O2") # no debug, active optimisation
 
