@@ -18,7 +18,7 @@ CacheManager::~CacheManager()
 struct tm CacheManager::GetTmTime()
 {
     time_t     now = time(0);
-    struct tm  tmstruct;
+    struct tm  tmstruct = { 0 };
 
 	#ifdef _MSC_VER
     localtime_s(&tmstruct, &now);
