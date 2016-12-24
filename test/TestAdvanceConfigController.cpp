@@ -68,9 +68,9 @@ bool TestAdvanceConfigController::SetAdvanceConfig()
     Request request;
     Response response;
 
-    string str = "PUT /AdvanceConfig?id=fragxpl-moduletwo.default HTTP/1.1\n\n{[\
+    string str = "PUT /AdvanceConfig?id=fragxpl-moduletwo.default HTTP/1.1\n\n[\
 {\"configname\":\"device1\",\"type\":\"temp\",\"value\":\"28\"},\
-{\"configname\":\"device2\",\"type\":\"output\",\"value\":\"high\"}]}";
+{\"configname\":\"device2\",\"type\":\"output\",\"value\":\"high\"}]";
 
     request.ParseRequest(str);
     m_AdvanceConfigController.Controller(request, &response);

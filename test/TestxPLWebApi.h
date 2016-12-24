@@ -18,6 +18,7 @@ public:
     static void ThreadStart(xPLWebApi* pxPLDev);
     bool Start();
     bool StdConfig();
+    bool AnswerCoverage();
     bool Stop();
     bool ReStart();
     bool ReStop();

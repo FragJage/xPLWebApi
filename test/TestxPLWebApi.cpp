@@ -8,6 +8,7 @@ TestxPLWebApi::TestxPLWebApi() : TestClass("WebApi", this)
 {
 	addTest("Start", &TestxPLWebApi::Start);
 	addTest("StdConfig", &TestxPLWebApi::StdConfig);
+	addTest("AnswerCoverage", &TestxPLWebApi::AnswerCoverage);
 	addTest("Stop", &TestxPLWebApi::Stop);
 	addTest("ReStart", &TestxPLWebApi::ReStart);
 	addTest("ReStop", &TestxPLWebApi::ReStop);
@@ -75,6 +76,72 @@ bool TestxPLWebApi::StdConfig()
     sch.Parse(msg);
     assert("25"==sch.GetValue("interval"));
     assert("fragxpl-webapi.test"==sch.GetSource());
+
+    return true;
+}
+
+bool TestxPLWebApi::AnswerCoverage()
+{
+    string msg;
+    xPL::SchemaObject schCnf(xPL::SchemaObject::stat, "config", "basic");
+    msg = schCnf.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaConfigListRequest
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaConfigCurrentRequest
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaAdvanceConfigListRequest
+
+    schCnf.SetType("list");
+    msg = schCnf.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    schCnf.SetType("current");
+    msg = schCnf.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    schCnf.SetType("end");
+    msg = schCnf.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    xPL::SchemaObject schAC(xPL::SchemaObject::stat, "advanceconfig", "list");
+    msg = schAC.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    schAC.SetType("current");
+    msg = schAC.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    xPL::SchemaObject schHb(xPL::SchemaObject::stat, "hbeat", "basic");
+    msg = schHb.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaConfigListRequest
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaConfigCurrentRequest
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaSensorRequest
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaAdvanceConfigListRequest
+    msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaAdvanceConfigCurrentCmnd
+
+    schHb.SetType("end");
+    msg = schHb.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    xPL::SchemaObject schDL(xPL::SchemaObject::stat, "datalogger", "basic");
+    schDL.SetValue("response", "value");
+    schDL.SetValue("device", "temp01");
+    msg = schDL.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    schDL.SetValue("response", "device");
+    schDL.SetValue("starttime", "20160101");
+    schDL.SetValue("endtime", "20161231");
+    msg = schDL.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
+
+    xPL::SchemaObject schSensor(xPL::SchemaObject::stat, "sensor", "basic");
+    schDL.SetValue("current", "22");
+    schDL.SetValue("device", "temp01");
+    msg = schDL.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    SimpleSockUDP::SetNextRecv(msg);
 
     return true;
 }
