@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/FragJage/xPLWebApi.svg?branch=master)](https://travis-ci.org/FragJage/xPLWebApi)
-[![Coverage Status](https://coveralls.io/repos/github/FragJage/xPLWebApi/badge.svg?branch=master&bust=0)](https://coveralls.io/github/FragJage/xPLWebApi?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/FragJage/xPLWebApi/badge.svg?branch=master&bust=1)](https://coveralls.io/github/FragJage/xPLWebApi?branch=master)
 [![Coverity Scan Build](https://scan.coverity.com/projects/11248/badge.svg)](https://scan.coverity.com/projects/11248)
 xPLWebApi
 =========
