@@ -15,6 +15,7 @@ TestDataloggerController::TestDataloggerController() : TestClass("TestDatalogger
 	addTest("GetValues", &TestDataloggerController::GetValues);
 	addTest("WrongSearch", &TestDataloggerController::WrongSearch);
 	addTest("WrongPOST", &TestDataloggerController::WrongPOST);
+	addTest("WaitTimeout", &TestDataloggerController::WaitTimeout);
 }
 
 TestDataloggerController::~TestDataloggerController()
@@ -76,5 +77,21 @@ bool TestDataloggerController::WrongPOST()
     request.ParseRequest("POST /Datalogger?id=moduleone HTTP/1.1");
     m_DataloggerController.Controller(request, &response);
     assert(500==response.GetStatut());
+    return true;
+}
+
+bool TestDataloggerController::WaitTimeout()
+{
+    Request request;
+    Response response;
+
+    request.ParseRequest("GET /Datalogger?search=devices&start=20990101&end=20991231 HTTP/1.1");
+    m_DataloggerController.Controller(request, &response);
+    assert(504==response.GetStatut());
+
+    request.ParseRequest("GET /Datalogger?search=values&device=fragxpl-modulezzz.default:device1&start=20100101&end=20101231 HTTP/1.1");
+    m_DataloggerController.Controller(request, &response);
+    assert(504==response.GetStatut());
+
     return true;
 }

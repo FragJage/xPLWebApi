@@ -112,7 +112,7 @@ bool TestxPLWebApi::AnswerCoverage()
     SimpleSockUDP::SetNextRecv(msg);
 
     xPL::SchemaObject schHb(xPL::SchemaObject::stat, "hbeat", "basic");
-    msg = schHb.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    msg = schHb.ToMessage("fragxpl-modultwo.default", "fragxpl-test.default");
     SimpleSockUDP::SetNextRecv(msg);
 
     msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaConfigListRequest
@@ -122,7 +122,7 @@ bool TestxPLWebApi::AnswerCoverage()
     msg = SimpleSockUDP::GetLastSend(10);     //Pass SchemaAdvanceConfigCurrentCmnd
 
     schHb.SetType("end");
-    msg = schHb.ToMessage("fragxpl-modulone.default", "fragxpl-test.default");
+    msg = schHb.ToMessage("fragxpl-modultwo.default", "fragxpl-test.default");
     SimpleSockUDP::SetNextRecv(msg);
 
     xPL::SchemaObject schDL(xPL::SchemaObject::stat, "datalogger", "basic");

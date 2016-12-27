@@ -16,6 +16,7 @@ public:
     bool GetValues();
     bool WrongSearch();
     bool WrongPOST();
+    bool WaitTimeout();
 
 private:
     DataloggerController m_DataloggerController;
