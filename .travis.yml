@@ -19,7 +19,7 @@ addons:
       name: "FragJage/xPLWebApi"
       description: "xPL daemon to communicate to xpl protocol with webapi."
     notification_email: inscrip.jage@free.fr
-    build_command_prepend: "cov-configure --comptype g++ --compiler $(which $COMPILER) --template && cmake . -G'Unix Makefiles' -DCMAKE_CXX_COMPILER=$(which $COMPILER)"
+    build_command_prepend: "cov-configure --comptype g++ --compiler $COMPILER --template && cmake . -G'Unix Makefiles' -DCMAKE_CXX_COMPILER=$(which $COMPILER)"
     build_command: "make"
     branch_pattern: coverity_branch
     
